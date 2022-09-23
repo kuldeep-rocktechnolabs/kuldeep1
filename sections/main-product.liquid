@@ -293,6 +293,7 @@
                     name="quantity"
                     id="Quantity-{{ section.id }}"
                     min="1"
+                    {% for tag in product.tags %}{% if tag == "3_limited" %}max="3"{% elsif tag == "5_limited" %}max="5"{% endif %}{% endfor %}
                     value="1"
                     form="{{ product_form_id }}"
                   >
