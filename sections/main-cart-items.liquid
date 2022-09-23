@@ -208,7 +208,7 @@
                         <input class="quantity__input"
                           {% for tag in item.product.tags %}
                           {% if tag == "3_limited" or tag == "5_limited" %}
-                          style="pointer-events: none !important;"
+                          disabled
                           {% endif %}
                           {% endfor %}
                           type="number"
