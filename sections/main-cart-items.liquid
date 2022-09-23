@@ -197,7 +197,7 @@
 
                   <td class="cart-item__quantity">
 
-                    {% for item in cart.items %}
+              
                     {% for tag in item.product.tags %}
                         {% if tag == "5_limited" and item.quantity > 5 or tag == "3_limited" and item.quantity > 3 %}
                             <div class="bs-callout bs-callout-danger">
@@ -205,7 +205,7 @@
                             </div>
                         {% endif %}
                     {% endfor %}
-                    {% endfor %}
+                    
 
                     <div class="cart-item__quantity-wrapper">
                       <label class="visually-hidden" for="Quantity-{{ item.index | plus: 1 }}">
