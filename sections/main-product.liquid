@@ -289,6 +289,11 @@
                   {% render 'icon-minus' %}
                 </button>
                 <input class="quantity__input"
+                    {% for tag in product.tags %}
+                    {% if tag == "3_limited" or elsif tag == "5_limited" %}
+                    style="pointer-events: none;"
+                    {% endif %}
+                    {% endfor %}
                     type="number"
                     name="quantity"
                     id="Quantity-{{ section.id }}"
