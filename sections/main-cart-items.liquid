@@ -60,7 +60,7 @@
 
             <tbody>
               {%- for item in cart.items -%}
-                <tr class="cart-item {% for tag in item.product.tags %}{% if tag == "5_limited" and item.quantity > 5 or tag == "3_limited" and item.quantity > 3 %}bs-callout bs-callout-warning{% endif %}{% endfor %}" id="CartItem-{{ item.index | plus: 1 }}">
+                <tr class="cart-item {% for tag in item.product.tags %}{% if tag == "5_limited" and item.quantity > 5 and tag == "3_limited" and item.quantity > 3 %}bs-callout bs-callout-warning{% endif %}{% endfor %}" id="CartItem-{{ item.index | plus: 1 }}">
                   <td class="cart-item__media">
                     {% if item.image %}
                       {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
@@ -199,7 +199,7 @@
 
               
                     {% for tag in item.product.tags %}
-                        {% if tag == "5_limited" and item.quantity > 5 or tag == "3_limited" and item.quantity > 3 %}
+                        {% if tag == "5_limited" and item.quantity > 5 and tag == "3_limited" and item.quantity > 3 %}
                             <div class="bs-callout bs-callout-danger">
                                 <b>Please fix the errors above before trying to continue.</b>
                             </div>

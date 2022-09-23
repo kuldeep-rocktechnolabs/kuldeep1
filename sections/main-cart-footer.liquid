@@ -59,7 +59,7 @@
                   </button>
                 </noscript>
 
-                <button type="submit" id="checkout" class="cart__checkout-button button" name="checkout"{% for item in cart.items %}{% for tag in item.product.tags %}{% if cart == empty or elsif tag == "5_limited" or item.quantity > 5 or elsif tag == "3_limited" or item.quantity > 3 %}disabled{% endif %}{% endfor %}{% endfor %} form="cart">
+                <button type="submit" id="checkout" class="cart__checkout-button button" name="checkout"{% for item in cart.items %}{% for tag in item.product.tags %}{% if cart == empty and elsif tag == "5_limited" and item.quantity > 5 and elsif tag == "3_limited" and item.quantity > 3 %}disabled{% endif %}{% endfor %}{% endfor %} form="cart">
                   {{ 'sections.cart.checkout' | t }}
                 </button>
               </div>
