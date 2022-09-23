@@ -210,7 +210,7 @@
                           name="updates[]"
                           value="{{ item.quantity }}"
                           min="0"
-                          {% for tag in product.tags %}{% if tag == "3_limited" %}max="3"{% elsif tag == "5_limited" %}max="5"{% endif %}{% endfor %}
+                          {% for tag in item.product.tags %}{% if tag == "3_limited" %}max="3"{% elsif tag == "5_limited" %}max="5"{% endif %}{% endfor %}
                           aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
                           id="Quantity-{{ item.index | plus: 1 }}"
                           data-index="{{ item.index | plus: 1 }}"
