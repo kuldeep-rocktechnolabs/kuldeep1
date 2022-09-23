@@ -290,7 +290,7 @@
                 </button>
                 <input class="quantity__input"
                     {% for tag in product.tags %}
-                    {% if tag == "3_limited" or elsif tag == "5_limited" %}
+                    {% if tag == "3_limited" or tag == "5_limited" %}
                     style="pointer-events: none !important;"
                     {% endif %}
                     {% endfor %}
