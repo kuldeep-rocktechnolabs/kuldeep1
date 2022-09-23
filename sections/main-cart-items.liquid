@@ -60,7 +60,7 @@
 
             <tbody>
               {%- for item in cart.items -%}
-                <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}">
+                <tr class="cart-item {% for tag in item.product.tags %}{% if tag == "5_limited" and item.quantity > 5 or tag == "3_limited" and item.quantity > 3 %}bs-callout bs-callout-warning{% endif %}{% endfor %}" id="CartItem-{{ item.index | plus: 1 }}">
                   <td class="cart-item__media">
                     {% if item.image %}
                       {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
@@ -196,6 +196,17 @@
                   </td>
 
                   <td class="cart-item__quantity">
+
+                    {% for item in cart.items %}
+                    {% for tag in item.product.tags %}
+                        {% if tag == "5_limited" and item.quantity > 5 or tag == "3_limited" and item.quantity > 3 %}
+                            <div class="bs-callout bs-callout-danger">
+                                <b>Please fix the errors above before trying to continue.</b>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+
                     <div class="cart-item__quantity-wrapper">
                       <label class="visually-hidden" for="Quantity-{{ item.index | plus: 1 }}">
                         {{ 'products.product.quantity.label' | t }}
@@ -285,6 +296,22 @@
                     </div>
                   </td>
                 </tr>
+
+                {% for tag in item.product.tags %}
+                {% if tag == "5_limited" and item.quantity > 5 %}
+                    <tr class="bs-callout bs-callout-warning">
+                        <td colspan="5">
+                            <b>Limit 5 per customer.</b>
+                        </td>
+                    </tr>
+                {% elsif tag == "3_limited" and item.quantity > 3 %}
+                <tr class="bs-callout bs-callout-warning">
+                  <td colspan="3">
+                      <b>Limit 3 per customer.</b>
+                  </td>
+                </tr>
+                {% endif %}
+                {% endfor %}
               {%- endfor -%}
             </tbody>
           </table>
